@@ -67,6 +67,12 @@ var jsFilesToInject = [
   // Bring in `.js` files for any other client-side JavaScript dependencies.
   // (e.g. Lodash, Vue.js, jQuery, Bootstrap, Ember, Angular, etc.)
   // > Be sure to list dependencies that depend on each other in the right order!
+  
+  'dependencies/lodash.js',
+  'dependencies/jquery.min.js',
+  'dependencies/vue.js',
+  'dependencies/vue-router.js',
+
   'dependencies/**/*.js',
 
   // All of the rest of your custom client-side js files will be injected here,
