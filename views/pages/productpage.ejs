@@ -1,0 +1,59 @@
+<div id="productpage" v-cloak>
+
+    <div class="container mt-5">
+        <h2>Product List</h2>
+
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-primary">Add Product</button>
+            <input placeholder="Search" />
+        </div>
+        <!-- ตารางสำหรับแสดงข้อมูลสินค้า -->
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Desc</th>
+                    
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>1</td>
+                    <td>test</td>
+                    <td><img src="" alt="test" style="max-width: 100px;"></td>
+                    <td>150 ฿</td>
+                    <td>Desc</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary">Edit</button>
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <!-- Pagination controls -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

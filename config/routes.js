@@ -22,6 +22,10 @@ module.exports.routes = {
   '/': { view: 'pages/homepage' },
 
   '/dashboard': { view: 'pages/dashboardpage' },
+  '/product': { view: 'pages/productpage' },
+
+  
+
 
 
 
