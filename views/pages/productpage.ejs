@@ -4,7 +4,7 @@
         <h2>Product List</h2>
 
         <div class="d-flex justify-content-between">
-            <button class="btn btn-primary">Add Product</button>
+            <button class="btn btn-primary" v-on:click="openAddProductModal()">Add Product</button>
             <input placeholder="Search" />
         </div>
         <!-- ตารางสำหรับแสดงข้อมูลสินค้า -->
@@ -16,7 +16,7 @@
                     <th>Image</th>
                     <th>Price</th>
                     <th>Desc</th>
-                    
+
                     <th>Actions</th>
 
                 </tr>
@@ -56,4 +56,115 @@
             </ul>
         </nav>
     </div>
+
+    <!-- Modal เพิ่มสินค้า -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- ฟอร์มเพิ่มสินค้า -->
+                    <form class="add-product-validation">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="productName">Name:</label>
+                                    <input type="text" class="form-control " id="productName" v-model="newProduct.name" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="productPrice">Price:</label>
+                                    <input type="text" class="form-control" id="productPrice"
+                                        v-model="newProduct.price" pattern="[0-9a-zA-Z-_ ]+" required>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="productImage">Image URL:</label>
+                            <input type="text" class="form-control" id="productImage" v-model="newProduct.image">
+                        </div> -->
+
+                        <!-- flower , trim , item & stick & roll -->
+                        <div class="form-group">
+                            <label for="productCate">Cate:</label>
+                            <select class="form-control" v-model="newProduct.cate" required>
+                                <option value="flower" selected>Flower</option>
+                                <option value="trim">Trim</option>
+                                <option value="item">Item</option>
+                                <option value="stick">Stick</option>
+                                <option value="roll">Roll</option>
+                            </select>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="productSantiva">Santiva:</label>
+                                    <input type="text" class="form-control" id="productSantiva" v-model="newProduct.santiva">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="productIndica">Indica:</label>
+                                    <input class="form-control" id="productIndica" v-model="newProduct.indica" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="productThc">THC:</label>
+                                    <input class="form-control" id="productThc" v-model="newProduct.thc" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="productCbd">CBD:</label>
+                                    <input class="form-control" id="productCbd" v-model="newProduct.cbd" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="productFlovors">Flovors:</label>
+                                    <textarea class="form-control" id="productFlovors" rows="3"
+                                        v-model="newProduct.flovors"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="productEffect">Effect:</label>
+                                    <textarea class="form-control" id="productEffect" rows="3"
+                                        v-model="newProduct.effect"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productDesc">Description:</label>
+                            <textarea class="form-control" id="productDesc" rows="2"
+                                v-model="newProduct.description"></textarea>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" @click="saveAddProduct">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

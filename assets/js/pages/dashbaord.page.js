@@ -5,9 +5,14 @@ parasails.registerPage("dashboardpage", {
     },
     data: {},
     computed: {},
-    methods: {},
+    methods: {
+
+
+    },
     beforeMount: function () { },
-    mounted: function () { },
+    mounted: function () {
+        
+    },
     watch: {},
 
 });

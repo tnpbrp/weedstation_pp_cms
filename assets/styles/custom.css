@@ -1,0 +1,5 @@
+#addProductModal .modal-dialog1 {
+    max-width: 1200px; /* ปรับขนาดสูงสุดของ Modal เป็นค่าที่คุณต้องการ */
+    width: 90%; /* กำหนดความกว้างของ Modal เป็นเปอร์เซ็นต์หรือค่าอื่นที่ต้องการ */
+    margin: auto;
+}

@@ -24,7 +24,12 @@ module.exports.routes = {
   '/dashboard': { view: 'pages/dashboardpage' },
   '/product': { view: 'pages/productpage' },
 
-  
+
+  // Product 
+  'POST /product/create': { controller: 'ProductController', action: 'create' },
+  'GET /product/find': { controller: 'ProductController', action: 'find' },
+  'PUT /product/update/:id': { controller: 'ProductController', action: 'update' },
+  'DELETE /product/delete/:id': { controller: 'ProductController', action: 'destroy' },
 
 
 
