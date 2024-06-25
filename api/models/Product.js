@@ -9,31 +9,21 @@ module.exports = {
 
   attributes: {
 
-    // username: { type: 'string', required: true },
-    // email: { type: 'string', required: true, unique: true }
-    name: { type: 'string' },
-    price: { type: 'number' },
+    name: { type: 'string', required: true, unique: true },
+    price: { type: 'number', required: true },
     // img:{},
-    // cate:{type: 'string' , required: true},
-
-    // sativa: { type: 'number' },
-    // indica: { type: 'number' },
-    // thc: { type: 'float' },
-    // cbd: { type: 'json' }, // หรือ { type: 'null' } ตามความเหมาะสม
-    // strain_flavors: { type: 'string' }, // หรือ { type: 'json' } ตามความเหมาะสม
-    // effect: { type: 'string' } // หรือ { type: 'json' } ตามความเหมาะสม
-
-
-    // desc:{},
-    //   desc: {
-    //     title: { type: 'string' },
-    //     sativa: { type: 'number' },
-    //     indica: { type: 'number' },
-    //     thc: { type: 'float' },
-    //     cbd: { type: 'json' }, // หรือ { type: 'null' } ตามความเหมาะสม
-    //     strain_flavors: { type: 'string' }, // หรือ { type: 'json' } ตามความเหมาะสม
-    //     effect: { type: 'string' } // หรือ { type: 'json' } ตามความเหมาะสม
-    // },
+    cate: {
+      type: 'string',
+      isIn: ['flower', 'trim', 'item', 'stick', 'roll'],
+      required: true
+    },
+    sativa: { type: 'number' },
+    indica: { type: 'number' },
+    thc: { type: 'float' },
+    cbd: { type: 'float' },
+    flavors: { type: 'string' },
+    effect: { type: 'string' },
+    desc: { type: 'string' }
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗

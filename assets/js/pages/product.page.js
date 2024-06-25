@@ -4,18 +4,20 @@ parasails.registerPage("productpage", {
 
     },
     data: {
-        newProduct: {
-            name: '',
-            image: '',
-            price: '',
-            description: ''
-        }
+        newProduct: {},
+        editProduct:{},
+        rows:[],
+        columns: [],
+
     },
     computed: {},
     methods: {
         findProducts() {
+            var vm =  this;
             axios.get(`/product/find`).then(res => {
-                console.log(res)
+                vm.rows = res.data
+
+                console.log(res.data)
             }).catch(err => console.log(err));
         },
 
@@ -37,53 +39,32 @@ parasails.registerPage("productpage", {
             })
         },
 
-        openAddProductModal() {
+        addProductModal() {
             $('#addProductModal').modal('toggle');
         },
 
+        updateProductModal() {
+            $('#updateProductModal').modal('toggle');
+        },
+
         saveAddProduct() {
-            console.log(this.newProduct)
-            //api create
+            var vm = this;
             var forms = document.getElementsByClassName('add-product-validation');
 
-            // Array.prototype.filter.call(forms, function (form) {
-            //     if (form.checkValidity() === false) {
-            //         return form.classList.add('was-validated');
-            //     }
+            Array.prototype.filter.call(forms, function (form) {
+                if (form.checkValidity() === false) {
+                    return form.classList.add('was-validated');
+                }
 
-            //     form.classList.remove('was-validated');
-            // });
+                form.classList.remove('was-validated');
+           
+                axios.post(`/product/create`, vm.newProduct).then(res => {
+                    $('#addProductModal').modal('hide');
+                    $.notify('Create product successfully.', 'success');
 
-            Array.prototype.forEach.call(forms, function (form) {
-                // Add event listener to 'submit' event of each form
-                form.addEventListener('submit', function (event) {
-                    // Check validity of the form
-                    if (!form.checkValidity()) {
-                        // If form is invalid, add 'was-validated' class to show validation feedback
-                        form.classList.add('was-validated');
-                        // Prevent form submission
-                        event.preventDefault();
-                        event.stopPropagation();
-                    } else {
-                        // If form is valid, remove 'was-validated' class
-                        form.classList.remove('was-validated');
-            
-                        // Example of what to do when form is valid (uncomment your axios code or do other actions)
-                        // axios.post(`/product/create`, this.newProduct).then(res => {
-                        //     $('#addProductModal').modal('hide');
-                        //     $.notify('Create customer successfully.', 'success');
-                        // }).catch(err => console.log(err));
-                    }
-                }, false);
+                    // after save success  reload data new
+                }).catch(err => console.log(err));
             });
-
-            // axios.post(`/product/create`, this.newProduct).then(res => {
-            //     $('#addProductModal').modal('hide');
-            //     $.notify('Create customer successfully.', 'success');
-            //     // load refresh data before save succuss
-            //   }).catch(err => console.log(err));
-
-            $('#addProductModal').modal('hide');
 
         }
 
