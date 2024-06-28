@@ -1,0 +1,436 @@
+[
+    {
+        "name": "Chronic cake",
+        "price": 400,
+        "img": "S__3039240_0.jpg",
+        "cate": "flower",
+        "desc": "",
+        "santiva": 0,
+        "indica": 0,
+        "thc": "27-30",
+        "cbd": null,
+        "flovors": "cake",
+        "effect": "hight body"
+    },
+    {
+        "name": "Da Funk",
+        "price": 400,
+        "img": "S__3039238_0.jpg",
+        "cate": "flower",
+        
+            "desc": "",
+            "santiva": 30,
+            "indica": 70,
+            "thc": "30",
+            "cbd": null,
+            "flovors": "sweet",
+            "effect": "hight body"
+        
+    },
+    {
+        "name": "White runtz",
+        "price": 250,
+        "img": "S__2318355_0.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 0,
+            "indica": 0,
+            "thc": "30",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "Joker Candy",
+        "price": 250,
+        "img": "S__2318349_0.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 50,
+            "indica": 50,
+            "thc": "30",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "Blueberry",
+        "price": 250,
+        "img": "S__2318351_0.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 20,
+            "indica": 80,
+            "thc": "25",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "Purple Queen",
+        "price": 250,
+        "img": "S__2318353_0.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 25,
+            "indica": 75,
+            "thc": "22",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "Apples & Banana",
+        "price": 250,
+        "img": "S__2318352_0.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 50,
+            "indica": 50,
+            "thc": "30",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "Bottom Bird",
+        "price": 250,
+        "img": "S__2318354_0.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 40,
+            "indica": 60,
+            "thc": "26",
+            "cbd": null,
+            "flovors": "herbel , woody",
+            "effect": ""
+    },
+    {
+        "name": "เศษดอก Medellin",
+        "price": 150,
+        "img": "S__1744903.jpg",
+        "cate": "trim",
+            "desc": "",
+            "santiva": 0,
+            "indica": 0,
+            "thc": "25-34",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "เศษดอก White Runtz",
+        "price": 150,
+        "img": "white_runtz_.jpg",
+        "cate": "trim",
+            "desc": "",
+            "santiva": 0,
+            "indica": 0,
+            "thc": "25",
+            "cbd": null,
+            "flovors": "",
+            "effect": "relaxed"
+    },
+    {
+        "name": "Grinder",
+        "price": 250,
+        "img": "grinder2.jpg",
+        "cate": "item"
+    },
+    {
+        "name": "Toppuff",
+        "price": 250,
+        "img": "top_puff2.jpg",
+        "cate": "item"
+    },
+    {
+        "name": "Gorilla glue",
+        "price": 250,
+        "img": "S__33071119.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 35,
+            "indica": 65,
+            "thc": "20",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "ใบทริม Bruce Baner",
+        "price": 60,
+        "img": "S__33071112_0.jpg",
+        "cate": "trim",
+            "desc": "",
+            "santiva": 60,
+            "indica": 40,
+            "thc": "0",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "ใบทริม Wedding Cake",
+        "price": 60,
+        "img": "S__33071109_0.jpg",
+        "cate": "trim",
+            "desc": "",
+            "santiva": 20,
+            "indica": 80,
+            "thc": "0",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "Mimosa Evo",
+        "price": 400,
+        "img": "S__32890892_0.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 40,
+            "indica": 60,
+            "thc": "25",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "Platinum Oreoz",
+        "price": 400,
+        "img": "S__32890890_0.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 40,
+            "indica": 60,
+            "thc": "27",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "Grand Daddy Purple",
+        "price": 250,
+        "img": "S__31678476_0.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 0,
+            "indica": 100,
+            "thc": "25",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "LA Banana Cake",
+        "price": 400,
+        "img": "1716825619358.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 40,
+            "indica": 60,
+            "thc": "28",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "ipenema",
+        "price": 300,
+        "img": "S__30498841_0.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 70,
+            "indica": 30,
+            "thc": "28",
+            "cbd": null,
+            "flovors": "berry , orange",
+            "effect": "talking, happy"
+    },
+    {
+        "name": "Godfather",
+        "price": 250,
+        "img": "Godfather.png",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 40,
+            "indica": 60,
+            "thc": "30",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "Super Lemon Haze",
+        "price": 350,
+        "img": "1714556426651.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 90,
+            "indica": 10,
+            "thc": "20",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "Velvet Moons",
+        "price": 350,
+        "img": "1714556425763.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 40,
+            "indica": 60,
+            "thc": "0",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "Sour DieSel",
+        "price": 350,
+        "img": "1714556425684.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 0,
+            "indica": 0,
+            "thc": "24",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "Bamboo",
+        "price": 200,
+        "img": "Bamboo.jpg",
+        "cate": "item"
+    },
+    {
+        "name": "Sugar Cane",
+        "price": 250,
+        "img": "Sugar_Cane.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 60,
+            "indica": 40,
+            "thc": "18",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "paper",
+        "price": 120,
+        "img": "paper_roll.jpg",
+        "cate": "item"
+    },
+    {
+        "name": "-",
+        "price": 100,
+        "img": "S__151994378_0.jpg",
+        "cate": "item"
+    },
+    {
+        "name": "Pipe",
+        "price": 180,
+        "img": "Pipe.jpg",
+        "cate": "item"
+    },
+    {
+        "name": "Green Crack Pack",
+        "price": 450,
+        "img": "green_crack_pack.jpg",
+        "cate": "stick"
+    },
+    {
+        "name": "Green Crack",
+        "price": 100,
+        "img": "green_crack2.jpg",
+        "cate": "flower",
+            "desc": "",
+            "santiva": 0,
+            "indica": 0,
+            "thc": "0",
+            "cbd": null,
+            "flovors": "",
+            "effect": ""
+    },
+    {
+        "name": "อัดแท่ง 100 G",
+        "price": 550,
+        "img": "stick1.jpg",
+        "cate": "stick"
+    },
+    {
+        "name": "อัดแท่ง เขียวๆ",
+        "price": 100,
+        "img": "stick2.jpg",
+        "cate": "stick"
+    },
+    {
+        "name": "roll",
+        "price": 200,
+        "img": "roll1.jpg",
+        "cate": "roll"
+    },
+    {
+        "name": "บ้องแก้ว",
+        "price": 700,
+        "img": "bong_2.jpg",
+        "cate": "item"
+    },
+    {
+        "name": "บ้องแก้ว",
+        "price": 600,
+        "img": "bong_3.jpg",
+        "cate": "item"
+    },
+    {
+        "name": "บ้องแก้ว",
+        "price": 1200,
+        "img": "1714305877218.jpg",
+        "cate": "item"
+    },
+    {
+        "name": "บ้องแก้ว",
+        "price": 1400,
+        "img": "Bong_1400.jpg",
+        "cate": "item"
+    },
+    {
+        "name": "TOPPUFF",
+        "price": 160,
+        "img": "toppuff.jpg",
+        "cate": "item"
+    },
+    {
+        "name": "Grinder",
+        "price": 350,
+        "img": "grinder.jpg",
+        "cate": "item"
+    },
+    {
+        "name": "Paper",
+        "price": 120,
+        "img": "paper_roll.jpg",
+        "cate": "item"
+    },
+    {
+        "name": "Paper",
+        "price": 60,
+        "img": "paper2.jpg",
+        "cate": "item"
+    },
+    {
+        "name": "Paper",
+        "price": 60,
+        "img": "paper3.jpg",
+        "cate": "item"
+    },
+    {
+        "name": "Paper",
+        "price": 60,
+        "img": "paper4.jpg",
+        "cate": "item"
+    }
+]

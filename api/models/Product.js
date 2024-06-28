@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
 
-    name: { type: 'string', required: true, unique: true },
+    name: { type: 'string', required: true },
     price: { type: 'number', required: true },
     // img:{},
     cate: {
@@ -19,8 +19,8 @@ module.exports = {
     },
     sativa: { type: 'number' },
     indica: { type: 'number' },
-    thc: { type: 'float' },
-    cbd: { type: 'float' },
+    thc: { type: 'string' },
+    cbd: { type: 'string' },
     flavors: { type: 'string' },
     effect: { type: 'string' },
     desc: { type: 'string' }

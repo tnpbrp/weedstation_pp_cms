@@ -28,6 +28,7 @@ module.exports.routes = {
   // Product 
   'POST /product/create': { controller: 'ProductController', action: 'create' },
   'GET /product/find': { controller: 'ProductController', action: 'find' },
+  'GET /product/table': { controller: 'ProductController', action: 'dataTable' },
   'GET /product/detail/:id': { controller: 'ProductController', action: 'findOne' },
   'PUT /product/update/:id': { controller: 'ProductController', action: 'update' },
   'DELETE /product/delete/:id': { controller: 'ProductController', action: 'destroy' },
