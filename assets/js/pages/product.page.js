@@ -244,6 +244,11 @@ parasails.registerPage("productpage", {
                         d.limit = d.length;  // จำนวนข้อมูลที่ต้องการในหน้าเดียว
                         d.offset = d.start;  // ตำแหน่งเริ่มต้นของข้อมูล
                         d.search = d.search.value;  // ค่าที่ใช้ในการค้นหา
+
+                        if (d.order.length > 0) {
+                            d.orderBy = d.columns[d.order[0].column].data;  // คอลัมน์ที่ใช้เรียงลำดับ
+                            d.orderDir = d.order[0].dir;  // ทิศทางการเรียงลำดับ (asc หรือ desc)
+                        }
                     }
                 },
                 columnDefs: [
@@ -254,12 +259,23 @@ parasails.registerPage("productpage", {
                     { data: 'name' },
                     { data: 'price' },
                     { data: 'cate' },
-                    { data: 'img', orderable: false },
+                    {
+                        data: 'img', orderable: false,
+                        render: function (data, type, row) {
+                            return `<figure class="sixteen-nine-img cursor-pointer" >
+                                <img class="img-thumb" :src="imageproxy(value, 100)" alt="img"
+                                onerror="this.onerror=null;this.src='../../assets/images/default_image.png'" />
+                                <div class="play-overlay"><i class="fas fa-search"></i></div>
+                            </figure>`
+                        }
+                    },
                     {
                         data: 'action', orderable: false,
                         render: function (data, type, row) { // สร้างปุ่มในเซลล์ "Actions"
-                            return '<button id="view-btn" class="btn btn-info btn-sm">View</button> ' +
-                                '<button id="delete-btn" class="btn btn-danger btn-sm ml-2">Delete</button>';
+                            return `<button id="view-btn" class="btn btn-info btn-sm">
+                                <i class='fas fa-eye'></i></button> ` +
+                                `<button id="delete-btn" class="btn btn-danger btn-sm ml-2"> 
+                                <i class='fas fa-trash-alt'></i></button>`;
                         }
                     }
                 ],

@@ -56,9 +56,46 @@ module.exports = {
 
     dataTable: async function (req, res) {
         try {
-            console.log('req limit',req.query.limit)
-            console.log('req offset',req.query.offset)
-            console.log('req search',req.query.search)
+            let limit = parseInt(req.query.limit) || 10;  // จำนวนรายการต่อหน้า (default: 10)
+            let offset = parseInt(req.query.offset) || 0;  // ตำแหน่งเริ่มต้นของข้อมูล
+            let search = req.query.search || '';  // ค่าที่ใช้ในการค้นหา
+            let sortBy = req.query.orderBy || 'name';  // คอลัมน์ที่ใช้เรียงลำดับ (default: name)
+            let sortDir = req.query.orderDir || 'asc';  // ทิศทางการเรียงลำดับ (default: asc)
+            let conditions = {};
+
+            if (search) {
+                conditions.or = [
+                    { name: { contains: search } },
+                    { price: { contains: search } },
+                    { cate: { contains: search } }
+                ];
+            }
+    
+            let sortOrder = {};
+            sortOrder[sortBy] = sortDir === 'asc' ? 1 : -1;
+    
+            let products = await Product.find(conditions)
+                .sort(sortOrder)
+                .limit(limit)
+                .skip(offset);
+    
+            let count = await Product.count(conditions);
+    
+            return res.json({
+                draw: parseInt(req.query.draw),
+                recordsTotal: count,
+                recordsFiltered: count,
+                data: products
+            });
+    
+        } catch (error) {
+            return res.serverError(error.message);
+        }
+    },
+    
+
+    dataTable2: async function (req, res) {
+        try {
 
             let limit = req.query.limit || 10;  // จำนวนรายการต่อหน้า (default: 10)
             let offset = req.query.offset || 0;  // ตำแหน่งเริ่มต้นของข้อมูล
@@ -70,7 +107,8 @@ module.exports = {
             let products = await Product.find({
                 or: [
                     { name: { contains: search } },
-                    // { price: { contains: search } },
+                    { price: { contains: search } },
+                    { cate: { contains: search } }
 
                 ]
             })
@@ -80,7 +118,8 @@ module.exports = {
             let count = await Product.count({
                 or: [
                     { name: { contains: search } },
-                    // { price: { contains: search } },
+                    { price: { contains: search } },
+                    { cate: { contains: search } }
 
                     // Add more search criteria as needed
                 ]

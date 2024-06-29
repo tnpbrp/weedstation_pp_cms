@@ -84,13 +84,13 @@
                                 <div class="form-group">
                                     <label for="productSantiva">Santiva:</label>
                                     <input type="text" class="form-control" id="productSantiva"
-                                        pattern="[1-9][0-9]{0,2}" v-model="newProduct.santiva">
+                                        pattern="[0-9]{0,2}" v-model="newProduct.santiva">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="productIndica">Indica:</label>
-                                    <input class="form-control" id="productIndica" pattern="[1-9][0-9]{0,2}"
+                                    <input class="form-control" id="productIndica" pattern="[0-9]{0,2}"
                                         v-model="newProduct.indica" />
                                 </div>
                             </div>
@@ -206,13 +206,13 @@
                                 <div class="form-group">
                                     <label for="productSantiva">Santiva:</label>
                                     <input type="text" class="form-control" id="productSantiva"
-                                        pattern="[1-9][0-9]{0,2}" v-model="editProduct.santiva" type="text">
+                                        pattern="[0-9]{0,2}" v-model="editProduct.santiva" type="text">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="productIndica">Indica:</label>
-                                    <input class="form-control" id="productIndica" pattern="[1-9][0-9]{0,2}"
+                                    <input class="form-control" id="productIndica" pattern="[0-9]{0,2}"
                                         v-model="editProduct.indica" type="text" />
                                 </div>
                             </div>
@@ -388,7 +388,7 @@
                 </div>
                 <div class="modal-footer">
                     <button id="edit-btn" class="btn btn-primary"
-                        @click="updateProductModal(productDetail.id)">Edit</button>
+                        @click="updateProductModal(productDetail.id)"><i class="fas fa-edit"></i> Edit</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>

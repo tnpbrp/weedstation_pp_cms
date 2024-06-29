@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
 
     name: { type: 'string', required: true },
-    price: { type: 'number', required: true },
+    price: { type: 'string', required: true },
     // img:{},
     cate: {
       type: 'string',
