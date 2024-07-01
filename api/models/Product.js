@@ -11,7 +11,7 @@ module.exports = {
 
     name: { type: 'string', required: true },
     price: { type: 'string', required: true },
-    // img:{},
+    thumbnail: { type: 'string', required: true },
     cate: {
       type: 'string',
       isIn: ['flower', 'trim', 'item', 'stick', 'roll'],

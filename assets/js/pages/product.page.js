@@ -1,13 +1,11 @@
 parasails.registerPage("productpage", {
     name: "productpage",
-    props: {
-
-    },
+    props: {},
     data: {
         newProduct: {},
         editProduct: {},
         productDetail: {},
-        rows: [],
+        // rows: [],
         columns: [
             {
                 label: 'ID',
@@ -43,7 +41,6 @@ parasails.registerPage("productpage", {
         ],
         selectField: [],
         selectProduct: {},
-
     },
     computed: {},
     methods: {
@@ -59,7 +56,7 @@ parasails.registerPage("productpage", {
             // สร้างข้อความวันที่ในรูปแบบที่ต้องการ (เช่น วันที่/เดือน/ปี)
             const formattedDate = `${day}/${month}/${year}`;
 
-            console.log(formattedDate); // แสดงผลวันที่ในรูปแบบที่ต้องการ
+            // console.log(formattedDate); // 
             return formattedDate;
         },
         setColumn() {
@@ -67,32 +64,9 @@ parasails.registerPage("productpage", {
             this.columns.forEach((el) => {
                 selectedField.push(el.field);
             })
-            // console.log(selectedField)
 
             this.selectField = selectedField;
         },
-        // getProducts() {
-        //     var vm = this;
-        //     let filteredData = {};
-
-        //     axios.get(`/product/find`).then(res => {
-
-        //         res.data.map((object, index) => {
-        //             object.number = index + 1;
-        //             object.img = '';
-        //         })
-
-        //         vm.selectField.forEach(key => {
-        //             if (res.data[0].hasOwnProperty(key)) {
-        //                 filteredData[key] = res.data[0][key];
-        //             }
-        //         });
-
-        //         // console.log(filteredData)
-        //         vm.rows.push(filteredData);
-
-        //     }).catch(err => console.log(err));
-        // },
 
         addProductModal() {
             $('#addProductModal').modal('toggle');
@@ -101,6 +75,9 @@ parasails.registerPage("productpage", {
         updateProductModal(productId) {
             axios.get(`/product/detail/${productId}`).then(res => {
                 this.editProduct = res.data;
+                const images = '../../images/upload/' + res.data.thumbnail;
+
+                $('#thumbnail-edit').attr('src', images);
                 $('#viewProductModal').modal('hide');
                 $('#updateProductModal').modal('toggle');
             }).catch((err) => {
@@ -119,20 +96,52 @@ parasails.registerPage("productpage", {
 
                 form.classList.remove('was-validated');
 
-                axios.post(`/product/create`, vm.newProduct).then(res => {
+                // check image 
+                if (document.getElementById('file-input').files[0]) {
+                    var filename = (new Date()).getTime() + '.png';
+                    var formData = new FormData();
+                    formData.append('file', document.getElementById('file-input').files[0], filename);
+                    vm.newProduct['thumbnail'] = filename;
 
-                    $('#addProductModal').modal('hide');
-                    $.notify('Create product successfully.', 'success');
+                    axios.post(`/product/upload`, formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            "filename": filename
+                        },
+                        onUploadProgress: function (progressEvent) {
+                            var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+                            // console.log(`อัปโหลด ${percentCompleted}% เสร็จแล้ว`);
+                            // แสดงเปอร์เซ็นต์ของการอัปโหลดได้ที่นี่
+                        }
+                    }).then(res => {
+                        document.getElementById('file-input').value = null;
+                        // console.log(res);
+                    }).catch(err => {
+                        console.error(err);
+                    });
 
-                    // after save success  reload data new
-                    // Clear the form fields and reset the newProduct object
-                    vm.newProduct = {};
+                    axios.post(`/product/create`, vm.newProduct).then(res => {
 
-                    // Reload data using DataTables API
-                    vm.reloadDataTable();
-                    // vm.getProducts();
+                        $('#addProductModal').modal('hide');
+                        $('#modal-loading').modal('show');
 
-                }).catch(err => console.log(err));
+                        setTimeout(function () {
+                            $('#modal-loading').modal('hide');
+                            $.notify('Create product successfully.', 'success');
+                            vm.newProduct = {};
+                            vm.reloadDataTable();
+                        }, 3000);
+
+                    }).catch(err => console.log(err));
+
+
+
+
+                } else {
+                    return alert("Please select images file");
+                }
+
+
             });
 
         },
@@ -148,11 +157,42 @@ parasails.registerPage("productpage", {
 
                 form.classList.remove('was-validated');
 
+                const existImg = vm.editProduct.thumbnail;
+                if (document.getElementById('file-input-edit').files[0]) {
+                    var filename = (new Date()).getTime() + '.png';
+                    var formData = new FormData();
+                    formData.append('file', document.getElementById('file-input-edit').files[0], filename);
+                    vm.editProduct['thumbnail'] = filename;
+
+                    axios.post(`/product/upload`, formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            "filename": filename
+                        },
+                        onUploadProgress: function (progressEvent) {
+                            var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+                            // console.log(`อัปโหลด ${percentCompleted}% เสร็จแล้ว`);
+                        }
+                    }).then(res => {
+                        // Delete image not use !
+                        vm.deleteImages(existImg);
+                        document.getElementById('file-input-edit').value = null;
+                    }).catch(err => {
+                        console.error(err);
+                    });
+                }
+
                 axios.put(`/product/update/`, vm.editProduct).then((res) => {
                     $('#updateProductModal').modal('hide');
-                    $.notify('Update product successfully.', 'success');
-                    vm.editProduct = {};
-                    vm.reloadDataTable();
+
+                    $('#modal-loading').modal('show');
+                    setTimeout(function () {
+                        $('#modal-loading').modal('hide');
+                        $.notify('Update product successfully.', 'success');
+                        vm.editProduct = {};
+                        vm.reloadDataTable();
+                    }, 3000);
+
 
                 })
             });
@@ -167,17 +207,22 @@ parasails.registerPage("productpage", {
                 vm.productDetail = res.data;
                 vm.productDetail.createdAt = vm.convertDate(res.data.createdAt);
                 vm.productDetail.updatedAt = vm.convertDate(res.data.updatedAt);
+
+                const images = '../../images/upload/' + vm.productDetail.thumbnail;
+
+                $('#thumbnail-view').attr('src', images);
                 $('#viewProductModal').modal('toggle');
             }).catch((err) => {
                 console.log(err)
             })
         },
 
-        deleteProduct(productId, productName) {
+        deleteProduct(productId, productName, fileName) {
             let vm = this;
             vm.selectProduct = {
                 id: productId,
-                name: productName
+                name: productName,
+                filename: fileName
             };
 
             $('#deleteProductModalLabel').text(`Delete product ${productName}`)
@@ -216,17 +261,18 @@ parasails.registerPage("productpage", {
             let vm = this;
             let productId = vm.selectProduct.id;
             let productName = vm.selectProduct.name;
+            let fileName = vm.selectProduct.filename;
 
             axios.delete(`/product/delete/${productId}`).then((res) => {
-                // after save success  reload data new
-                // vm.getProducts();
+
+                // console.log(vm.selectProduct.fileName)
+                vm.deleteImages(fileName);
                 vm.selectProduct = {};
                 vm.reloadDataTable();
                 $('#deleteProductModal').modal('hide');
                 $.notify('Deleted\xa0' + productName, 'success');
             })
         },
-
 
         setDataTable() {
 
@@ -252,38 +298,44 @@ parasails.registerPage("productpage", {
                     }
                 },
                 columnDefs: [
-                    { className: 'text-center', targets: [4, 5] } // ให้ทุกคอลัมน์ใน DataTables เป็น text-center
+                    { className: 'text-center', targets: [2, 3, 4, 5] } // ให้ทุกคอลัมน์ใน DataTables เป็น text-center
                 ],
                 columns: [
                     { data: 'id', visible: false },
-                    { data: 'name' },
-                    { data: 'price' },
-                    { data: 'cate' },
+                    { data: 'name', width: '25%' },
+                    { data: 'price', width: '25%' },
+                    { data: 'cate', width: '10%' },
                     {
-                        data: 'img', orderable: false,
+                        data: 'thumbnail', orderable: false,
                         render: function (data, type, row) {
-                            return `<figure class="sixteen-nine-img cursor-pointer" >
-                                <img class="img-thumb" :src="imageproxy(value, 100)" alt="img"
-                                onerror="this.onerror=null;this.src='../../assets/images/default_image.png'" />
-                                <div class="play-overlay"><i class="fas fa-search"></i></div>
-                            </figure>`
-                        }
+                            return `<figure class="sixteen-nine-img cursor-pointer" id="view-img-btn">
+                                        <img class="img-thumb" 
+                                        src="../../images/upload/${data}" alt="image"
+                                        onerror="this.onerror=null;this.src='../../images/default_image.png'" 
+                                        loading="lazy" />
+                                        <div class="play-overlay"><i class="fas fa-search"></i></div>
+                                    </figure>`;
+                        },
+                        width: '20%'
                     },
                     {
                         data: 'action', orderable: false,
                         render: function (data, type, row) { // สร้างปุ่มในเซลล์ "Actions"
-                            return `<button id="view-btn" class="btn btn-info btn-sm">
-                                <i class='fas fa-eye'></i></button> ` +
-                                `<button id="delete-btn" class="btn btn-danger btn-sm ml-2"> 
-                                <i class='fas fa-trash-alt'></i></button>`;
-                        }
+                            return `
+                                <button id="view-btn" class="btn btn-info btn-sm">
+                                <i class='fas fa-eye'></i></button> 
+                                <button id="delete-btn" class="btn btn-danger btn-sm ml-2"> 
+                                <i class='fas fa-trash-alt'></i></button>
+                                `;
+                        },
+                        width: '20%'
                     }
                 ],
                 paging: true,
                 searching: true,
                 lengthChange: true,
-                pageLength: 10,  // จำนวนรายการต่อหน้า
-                order: [[0, 'asc']],  // เรียงลำดับตามคอลัมน์แรก
+                pageLength: 10,
+                order: [[0, 'asc']],
                 // language: {
                 //     emptyTable: 'ไม่พบข้อมูล',
                 //     info: 'แสดง _START_ ถึง _END_ จากทั้งหมด _TOTAL_ รายการ',
@@ -303,12 +355,14 @@ parasails.registerPage("productpage", {
                     });
 
                     $(row).find('#delete-btn').on('click', function () {
-                        vm.deleteProduct(data.id, data.name);
+                        vm.deleteProduct(data.id, data.name, data.thumbnail);
                     });
 
-                    // $(row).find('#edit-btn').on('click', function () {
-                    //     vm.updateProductModal(data.id);
-                    // });
+                    $(row).find('#view-img-btn').on('click', function () {
+                        vm.viewImage(data.thumbnail);
+                    });
+
+
 
 
                 }
@@ -319,15 +373,61 @@ parasails.registerPage("productpage", {
 
         reloadDataTable() {
             $('#products-table').DataTable().ajax.reload();
-        }
+        },
+
+        onChangeFileUpload(e) {
+            var file = e.target.files[0];
+            var preview = document.getElementById('thumbnail');
+            var reader = new FileReader();
+            reader.addEventListener("load", function () {
+                preview.src = reader.result;
+            }, false);
+            reader.readAsDataURL(file);
+        },
+
+        onChangeFileUploadEdit(e) {
+            var file = e.target.files[0];
+            var preview = document.getElementById('thumbnail-edit');
+            var reader = new FileReader();
+            reader.addEventListener("load", function () {
+                preview.src = reader.result;
+            }, false);
+            reader.readAsDataURL(file);
+        },
+
+        viewImage(filename) {
+            // var image = config.imgproxy + '/unsafe/426x0/' + encodeURIComponent(config.backend_img + img);
+            var image = '../../images/upload/' + filename;
+
+            $('#modalpreview').modal('toggle');
+            $('.images-title').text(filename);
+            $('#imgpreview').attr('src', image);
+        },
+
+        deleteImages(filename) {
+            axios.post('/product/delete/file', {}, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    "filename": filename
+                },
+            }).then(res => {
+                console.log('delete old file', res);
+            }).catch(err => {
+                console.error(err);
+            });
+        },
 
     },
     beforeMount: function () { },
     mounted: function () {
+        // let vm = this;
         this.setColumn();
-        // this.getProducts();
         this.setDataTable();
 
+        // window.addEventListener('resize', function (event) {
+        //     console.log('Window has been resized!');
+        //     // ทำสิ่งที่ต้องการเมื่อมีการ resize เกิดขึ้น
+        // });
 
     },
     watch: {},

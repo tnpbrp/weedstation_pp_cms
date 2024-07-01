@@ -26,6 +26,8 @@ module.exports.routes = {
 
 
   // Product 
+  'POST /product/upload': { controller: 'ProductController', action: 'uploadFile' },
+  'POST /product/delete/file': { controller: 'ProductController', action: 'deleteFile' },
   'POST /product/create': { controller: 'ProductController', action: 'create' },
   'GET /product/find': { controller: 'ProductController', action: 'find' },
   'GET /product/table': { controller: 'ProductController', action: 'dataTable' },

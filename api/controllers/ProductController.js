@@ -5,7 +5,49 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
+const path = require('path');
+const fs = require('fs');
+
 module.exports = {
+
+
+    uploadFile: function (req, res) {
+        const { filename } = req.headers;
+
+        req.file('file').upload({
+            // adapter: require('skipper-gridfs'),
+            // uri: 'mongodb://localhost:27017/Test.files'
+            dirname: '../../assets/images/upload',
+            maxBytes: sails.config.maxBytes,
+            saveAs: filename
+        }, function (err, filesUploaded) {
+            if (err) return res.serverError(err);
+
+            return res.json({
+                message: filesUploaded.length + 'file(s) uploaded successfully!',
+                files: filesUploaded
+            });
+        });
+    },
+
+    deleteFile: function (req, res) {
+        const { filename } = req.headers;
+        const filePath = path.resolve(__dirname, '../../assets/images/upload', filename);
+
+        if (!fs.existsSync(filePath)) {
+            return res.notFound(`File '${filename}' not found`);
+        }
+
+        // ลบไฟล์
+        fs.unlink(filePath, (err) => {
+            if (err) {
+                return res.serverError(err);
+            }
+            return res.json({ message: `File '${filename}' deleted successfully` });
+        });
+
+    },
+
     create: async function (req, res) {
         try {
             let newData = await Product.create(req.body).fetch();
@@ -70,29 +112,29 @@ module.exports = {
                     { cate: { contains: search } }
                 ];
             }
-    
+
             let sortOrder = {};
             sortOrder[sortBy] = sortDir === 'asc' ? 1 : -1;
-    
+
             let products = await Product.find(conditions)
                 .sort(sortOrder)
                 .limit(limit)
                 .skip(offset);
-    
+
             let count = await Product.count(conditions);
-    
+
             return res.json({
                 draw: parseInt(req.query.draw),
                 recordsTotal: count,
                 recordsFiltered: count,
                 data: products
             });
-    
+
         } catch (error) {
             return res.serverError(error.message);
         }
     },
-    
+
 
     dataTable2: async function (req, res) {
         try {
