@@ -1,3 +1,95 @@
+[v-cloak] {
+    display: none;
+}
+
+.title-sidebar {
+    color: rgb(0, 0, 0);
+    padding: 0px;
+    text-decoration-line: none !important;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+.menu-list li {
+    margin: 2px 0px;
+}
+
+.menu-list li:hover {
+    background-color: #3686dd;
+    border-radius: 5px;
+    padding: 10px 15px;
+    color:#f8f9fa;
+}
+
+
+.menu-list li.active {
+    border: 1px solid #007bff;
+    background-color: #0069d9;
+    border-radius: 5px;
+    padding: 10px 15px;
+    display: inline-block;
+    width: 100%;
+}
+
+.user-info {
+    padding-right: 50px;
+}
+
+.user-avatar {
+    width: 20px;
+    height: 20px;
+    /* border-radius: 15%; */
+}
+
+.hidden {
+    display: none;
+}
+
+.reset-password-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.reset-password-form h2 {
+    margin-bottom: 20px;
+}
+
+.reset-password-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.reset-password-form label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.reset-password-form input[type="email"] {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.reset-password-form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.reset-password-form button:hover {
+    background-color: #0056b3;
+}
+
 .cursor-pointer {
     cursor: pointer;
 }
@@ -80,16 +172,19 @@ figure.sixteen-nine-img:hover>.play-overlay {
 
 
 #products-table tbody tr:nth-child(even) {
-    background-color: #ffffff; /* ขาว */
+    background-color: #ffffff;
+    /* ขาว */
 }
 
 #products-table tbody tr:nth-child(odd) {
-    background-color: #f2f2f2; /* เทา */
+    background-color: #f2f2f2;
+    /* เทา */
 }
 
 /* Optional: Hover effect */
 #products-table tbody tr:hover {
-    background-color: #c7c7c7; /* เทาอ่อน */
+    background-color: #c7c7c7;
+    /* เทาอ่อน */
 }
 
 #products-table tbody tr td {
@@ -102,20 +197,80 @@ figure.sixteen-nine-img:hover>.play-overlay {
     margin-top: 20%;
 }
 
-.loading-spinner{
-    width:30px;
-    height:30px;
-    border:2px solid blue;
-    border-radius:50%;
-    border-top-color:#0001;
-    display:inline-block;
-    animation:loadingspinner .7s linear infinite;
-  }
-  @keyframes loadingspinner{
-    0%{
-      transform:rotate(0deg)
+
+.loading-spinner {
+    width: 30px;
+    height: 30px;
+    border: 2px solid blue;
+    border-radius: 50%;
+    border-top-color: #0001;
+    display: inline-block;
+    animation: loadingspinner .7s linear infinite;
+}
+
+@keyframes loadingspinner {
+    0% {
+        transform: rotate(0deg)
     }
-    100%{
-      transform:rotate(360deg)
+
+    100% {
+        transform: rotate(360deg)
     }
-  }
+}
+
+#sidemenu-hide {
+    background-color: #f8f9fa;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+    display: none;
+    width: 240px;
+    height: 100vh;
+    background-color: #f8f9fa;
+    padding: 10px 16px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    /* ให้สามารถ scroll ได้เมื่อ sidebar ยาวเกินจอ */
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav ul li {
+    padding: 10px 15px;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.main-content {
+    padding-left: 20px;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 0;
+        padding-top: 60px;
+        /* พื้นที่สำหรับปุ่ม Toggle Sidebar ที่อยู่ด้านบน */
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .sidebar.active {
+        width: 250px;
+    }
+}

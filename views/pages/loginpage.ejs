@@ -1,0 +1,31 @@
+<div id="loginpage" v-cloak>
+    <div class="container">
+        <h1 class="mt-5">Login</h1>
+        <!-- <form class="mt-4" action="/login" method="POST"> ตั้ง action ตาม path ที่ใช้ในการโพสต์ข้อมูล -->
+        <form class="login-validation mt-4">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username"
+                    required>
+                <div class="invalid-feedback">
+                    Please insert username
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password"
+                    required>
+                <div class="invalid-feedback">
+                    Please insert password
+                </div>
+            </div>
+
+            <div class="">
+                <button type="button" class="btn btn-info"><a href="/register"
+                        style="color: white;">Register</a></button>
+                <button type="button" class="btn btn-primary" @click="login()">Login</button>
+                <a style="float: right;" class="mt-1" href="#/resetpassword">Reset Password</a>
+            </div>
+        </form>
+    </div>
+</div>

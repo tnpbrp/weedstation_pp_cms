@@ -17,6 +17,20 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  // '*': true,
+  '*': true,
+
+  AuthController: {
+    '*': 'isLoggedIn',
+    'register': true,
+    'login': true,
+  },
+
+  ProductController: {
+    '*': 'isLoggedIn',
+  },
+
+  // NewController: {
+  //   option: ['logged-in', 'system-view'],
+  // }
 
 };

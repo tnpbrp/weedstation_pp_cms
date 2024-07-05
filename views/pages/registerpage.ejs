@@ -1,0 +1,30 @@
+<div id="registerpage" class="container" v-cloak>
+
+    <h1 class="mt-5">Register Page</h1>
+    <form class="mt-4">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" v-model="username">
+        </div>
+
+        <!-- <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" v-model="email">
+        </div> -->
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" v-model="password">
+        </div>
+
+        <div class="form-group">
+            <label for="repassword">Re-enter Password:</label>
+            <input type="password" class="form-control" id="repassword" v-model="repassword">
+        </div>
+
+        <button type="button" class="btn btn-primary" @click="register()">Register</button>
+        <a style="float: right;" href="/login">Have username</a>
+    </form>
+
+
+</div>

@@ -19,11 +19,29 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
-
-  '/dashboard': { view: 'pages/dashboardpage' },
+  // '/': { view: 'pages/homepage' },
+  '/': { view: 'pages/dashboardpage' },
   '/product': { view: 'pages/productpage' },
 
+  '/register': {
+    view: 'pages/registerpage',
+    locals: { layout: 'layouts/register-layout' }
+  },
+  '/login': {
+    view: 'pages/loginpage',
+    locals: { layout: 'layouts/register-layout' }
+  },
+  '/resetpassword': {
+    view: 'pages/resetpasspage',
+    locals: { layout: 'layouts/register-layout' }
+  },
+
+  // Auth
+  'POST /login': 'AuthController.login',
+  'POST /register': 'AuthController.register',
+  'POST /logout': 'AuthController.logout',
+  'POST /repassword': 'AuthController.repassword',
+  'POST /check/auth': 'AuthController.checkAuth',
 
   // Product 
   'POST /product/upload': { controller: 'ProductController', action: 'uploadFile' },
@@ -34,8 +52,6 @@ module.exports.routes = {
   'GET /product/detail/:id': { controller: 'ProductController', action: 'findOne' },
   'PUT /product/update/:id': { controller: 'ProductController', action: 'update' },
   'DELETE /product/delete/:id': { controller: 'ProductController', action: 'destroy' },
-
-
 
 
   /***************************************************************************

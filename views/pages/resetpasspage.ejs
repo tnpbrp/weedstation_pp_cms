@@ -1,0 +1,16 @@
+<div id="resetpasswordpage" v-cloak>
+
+    <div class="reset-password-form">
+        <h2>Reset Password</h2>
+        <!-- ส่วนนี้ใช้ Vue.js เพื่อเก็บข้อมูลและจัดการกับการ reset password -->
+        <form @submit.prevent="resetPassword">
+            <!-- <label for="email">Email:</label>
+            <input type="email" id="email" v-model="email" required> -->
+            <label for="username">Username:</label>
+            <input type="username" id="username" v-model="username" required>
+            <button type="submit">Reset Password</button>
+        </form>
+    </div>
+
+
+</div>
