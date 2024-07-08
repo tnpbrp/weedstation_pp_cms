@@ -43,15 +43,28 @@ const checkMenuActive = () => {
 }
 
 $(document).ready(function () {
-    $('#sidemenu-hide').click(function () {
-        $('.sidebar').css({ 'display': 'none', })
-        $('#toggle-sidemenu').toggleClass('hidden');
+    $('#toggle-sidemenu').click(function () {
+        $('.sidenav').css({ 'width': '240px' });
+        $('.sidenav').toggleClass('open');
+        // $('.sidenav').addClass('open');
+
+
     });
 
-    $('#toggle-sidemenu').click(function () {
-        $('.sidebar').css({ 'display': 'block' })
-        $('#toggle-sidemenu').toggleClass('hidden');
+    $('#sidemenu-hide').click(function () {
+        $('.sidenav').css({ 'width': '0px', });
+        $('.sidenav').toggleClass('open');
     });
+
+    $('.sidenav-backdrop').click(function () {
+        console.log("cclick");
+        $('.sidenav').css({ 'width': '0px', });
+        $('.sidenav').toggleClass('open');
+    });
+
+    
+
+
 
     checkAuth();
     checkMenuActive();

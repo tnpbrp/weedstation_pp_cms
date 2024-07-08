@@ -1,0 +1,15 @@
+@media (max-width: 768px) {
+    .sidebar {
+        width: 0;
+        padding-top: 60px;
+        /* พื้นที่สำหรับปุ่ม Toggle Sidebar ที่อยู่ด้านบน */
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .sidebar.active {
+        width: 250px;
+    }
+}
