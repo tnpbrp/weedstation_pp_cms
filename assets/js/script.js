@@ -57,6 +57,25 @@ $(document).ready(function () {
         $('.sidenav').toggleClass('open');
     });
 
+    $('.users-toggler').click(function (e) {
+        $('.users-menu').toggleClass('show');
+    });
+
     checkAuth();
     checkMenuActive();
 });
+
+//  1. User management and Access control
+//  2. Content Management 
+//  3. Content Editor 
+//  4. Media Management 
+//  5. Template and Customization 
+//  6. Menu Management 
+//  7. Search Functionality 
+//  8. Plugins and Extensions 
+//  9. SEO Tools 
+//  10. Reporting and Analytics 
+//  11. Version Control 
+//  12. Form Management 
+//  13. Backup and Restore 
+//  14. Notification and Communication 

@@ -32,6 +32,7 @@ body {
 }
 
 /* Side Nav */
+
 .sidenav {
     background-color: #f8f9fa;
     height: 100%;
@@ -68,8 +69,6 @@ body {
     margin-left: 240px;
 }
 
-
-
 .sidenav ul {
     list-style-type: none;
     padding: 0;
@@ -96,9 +95,11 @@ body {
 
 .menu-list li i {
     font-size: 14px;
+    margin-right: 0.5rem !important;
 }
 
 .menu-list li a {
+    white-space: nowrap;
     padding: 3px 5px 3px 12px;
     text-decoration: none;
     /* font-size: var(--font-size); */
@@ -127,6 +128,14 @@ body {
     width: 87%;
 }
 
+.users-menu {
+    display: none;
+}
+
+.users-menu.show {
+    display: block;
+}
+
 #sidemenu-hide {
     background-color: #f8f9fa;
     border-color: rgba(0, 0, 0, 0.1);
@@ -148,6 +157,7 @@ body {
 
 .user-info {
     padding-right: 50px;
+    cursor: pointer;
 }
 
 /* etc. */

@@ -78,6 +78,7 @@ module.exports = {
 
     logout: async function (req, res) {
         req.logout();
+        // return res.ok();
         return res.send("Logged out successfully!");
     },
 

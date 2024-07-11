@@ -5,5 +5,4 @@ module.exports = async function (req, res, proceed) {
     } else {
         return res.forbidden('You are not permitted to perform this action.');
     }
-
 }
