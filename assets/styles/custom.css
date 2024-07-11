@@ -27,6 +27,10 @@ body {
 
 }
 
+.navbar-brand {
+    padding-left: 10px;
+}
+
 /* Side Nav */
 .sidenav {
     background-color: #f8f9fa;
@@ -34,10 +38,11 @@ body {
     width: 0;
     position: fixed;
     left: 0;
-    top: 0;
+    top: 1.3px;
     overflow-x: hidden;
     z-index: 1;
-    transition: 0.1s;
+    /* transition: 0.1s; */
+
 }
 
 .sidenav-backdrop {
@@ -63,43 +68,49 @@ body {
     margin-left: 240px;
 }
 
-.sidenav a {
-    padding: 3px 5px 3px 12px;
-    text-decoration: none;
-    font-size: var(--font-size);
-    color: black;
-    /*color: #818181; */
-    display: block;
-    transition: 0.3s;
-}
+
 
 .sidenav ul {
     list-style-type: none;
     padding: 0;
 }
 
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
 .sidenav-header {
-    padding: 10px 0px 0px 16px;
+    /* padding: 10px 0px 0px 32px; */
     white-space: nowrap;
 }
 
 .sidenav-title {
     color: rgb(0, 0, 0);
-    padding: 0px;
     text-decoration-line: none !important;
 }
 
 .menu-list {
-    margin-top: 20px;
+    margin-top: 11px;
 }
 
 .menu-list li {
     margin: 0px 15px;
     padding: 10px 15px;
+}
+
+.menu-list li i {
+    font-size: 14px;
+}
+
+.menu-list li a {
+    padding: 3px 5px 3px 12px;
+    text-decoration: none;
+    /* font-size: var(--font-size); */
+    font-size: 14px;
+    color: black;
+    /*color: #818181; */
+    display: block;
+    transition: 0.3s;
+}
+
+.menu-list li a:hover {
+    color: #f1f1f1;
 }
 
 .menu-list li:hover {
@@ -119,6 +130,7 @@ body {
 #sidemenu-hide {
     background-color: #f8f9fa;
     border-color: rgba(0, 0, 0, 0.1);
+    color: rgb(49, 49, 49);
 }
 
 /* Custom class */

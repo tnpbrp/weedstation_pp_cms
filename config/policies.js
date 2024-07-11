@@ -23,6 +23,7 @@ module.exports.policies = {
     '*': 'isLoggedIn',
     'register': true,
     'login': true,
+    'checkAuth': true,
   },
 
   ProductController: {

@@ -5,10 +5,10 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
+const passport = require('passport');
 const bcrypt = require('bcryptjs');
 
 module.exports = {
-
     register: async function (req, res) {
         const { username, password } = req.body;
 
@@ -27,44 +27,6 @@ module.exports = {
 
             // Return success message or user data
             return res.json({ message: 'User registered successfully', user: newUser });
-        } catch (err) {
-            return res.serverError(err);
-        }
-    },
-
-    login: async function (req, res) {
-        const { username, password } = req.body;
-
-        try {
-            const user = await User.findOne({ username });
-            if (!user) {
-                return res.status(404).json({ message: 'User not found' });
-            }
-
-            const isMatch = await bcrypt.compare(password, user.password);
-            if (!isMatch) {
-                return res.status(401).json({ message: 'Invalid credentials' });
-            }
-
-            // Set authenticated session
-            req.session.authenticated = true;
-            req.session.user = user;
-
-            // สร้าง token หรือ session สำหรับล็อคอินแล้วส่งกลับไปยัง client
-            // เช่นใช้ JWT token, session, หรือตัวบอกสถานะล็อคอินอื่นๆ
-            return res.json({ message: 'Login successful', user });
-        } catch (err) {
-            return res.serverError(err);
-        }
-    },
-
-    logout: async function (req, res) {
-        try {
-            // Clear session
-            req.session.authenticated = false;
-            req.session.user = null;
-
-            return res.json({ message: 'Logout successful' });
         } catch (err) {
             return res.serverError(err);
         }
@@ -92,23 +54,33 @@ module.exports = {
         }
     },
 
-    checkAuth: function (req, res, next) {
-        console.log(req.session.authenticated)
-        console.log(req.session.user)
+    login: async function (req, res) {
+        passport.authenticate('local', function (err, user, info) {
+            if (err) { return res.serverError(err); }
+            if (!user) { return res.forbidden(info && info.message); }
+            req.logIn(user, function (err) {
+                if (err) { return res.serverError(err); }
+                return res.ok("Logged in successfully!");
+            });
+        })(req, res);
+    },
 
-        // Check if session contains authenticated user
-        if (req.session.authenticated && req.session.user) {
-            // User is authenticated, proceed to next middleware or action
-            // return next();
+    checkAuth: function (req, res) {
+        if (req.isAuthenticated()) {
             return res.json({
-                // id
-                username:req.session.user.username,
+                message: 'User is authenticated',
+                username: req.user.username
             });
         } else {
-            // User is not authenticated, return unauthorized response
             return res.status(401).json({ message: 'Unauthorized' });
         }
     },
+
+    logout: async function (req, res) {
+        req.logout();
+        return res.send("Logged out successfully!");
+    },
+
 
 };
 

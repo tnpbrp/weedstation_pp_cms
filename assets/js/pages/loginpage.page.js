@@ -25,10 +25,9 @@ parasails.registerPage("loginpage", {
                     console.log(res);
                     window.location.href = '/';
                 }).catch((err) => {
+                    console.log(err.response)
                     $.notify(err.response.data.message, 'error');
                     console.log(err.response.data.message)
-                    // return;
-                    // if(err.data.message)
                 })
 
             });
