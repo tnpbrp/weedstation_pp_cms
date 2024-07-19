@@ -7,17 +7,42 @@
 
         <div class="row">
             <div class="col-md-6">
-                <!-- ส่วนของกราฟหรือข้อมูลสถิติ -->
                 <h2>Statistics</h2>
                 <canvas id="myChart" width="400" height="400"></canvas>
             </div>
-            <div class="col-md-6">
-                <!-- ส่วนของตารางหรือข้อมูลอื่น ๆ -->
-                <h2>Recent Activities</h2>
+            <div class="recent-activity col-md-6">
+                <div class="select-activity-group p-3 d-flex justify-content-between">
+                        <span class="pt-1">Recent Activities</span>
+                    
+                        <div class="select-activity">
+                            <select class="select-user-active custom-select">
+                                <option>All Users</option>
+                                <option>User1</option>
+                                <option>User2</option>
+                            </select>
+                            <select class="select-date-active custom-select">
+                                <option>Today</option>
+                                <option>Tomorrow</option>
+                                <option>Last 1 hour</option>
+                                <!-- Add option  -->
+                            </select>
+                        </div>
+                </div>
+     
+                <div class="display-activity">
+                    <ul>
+                        <li>Activity 1</li>
+                        <li>Activity 2</li>
+                        <li>Activity 3</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 mt-3">
+                <h2>Products</h2>
                 <ul>
-                    <li>Activity 1</li>
-                    <li>Activity 2</li>
-                    <li>Activity 3</li>
+                    <li>Products count = 5 product</li>
+                    <li>Logs</li>
                 </ul>
             </div>
         </div>

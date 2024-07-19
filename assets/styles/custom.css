@@ -16,9 +16,42 @@ body {
 
 .main-content {
     padding: 20px 0px;
-    height: 100vh;
     background-color: var(--bg-color);
     transition: all 0.3s ease;
+    min-height: 100vh;
+}
+
+.login-container {
+    padding: 80px;
+}
+
+.resetpassword {
+    float: right;
+}
+
+.resetpassword:hover {
+    color: rgb(0, 0, 0);
+}
+
+.auth-form {
+    width: 320px;
+    margin: 0 auto;
+}
+
+.recent-activity {
+    background-color: white;
+    /* border: #0056b3 1px solid; */
+
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.select-date-active,
+.select-user-active {
+    width: 150px;
+}
+.select-activity-group {
+    border-bottom:1px black solid;
+    margin-bottom: 25px;
 }
 
 /* Nav bar */
@@ -82,6 +115,7 @@ body {
 .sidenav-title {
     color: rgb(0, 0, 0);
     text-decoration-line: none !important;
+    margin-left: 0px;
 }
 
 .menu-list {

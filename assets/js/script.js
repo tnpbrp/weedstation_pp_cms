@@ -66,16 +66,20 @@ $(document).ready(function () {
 });
 
 //  1. User management and Access control
-//  2. Content Management 
-//  3. Content Editor 
-//  4. Media Management 
-//  5. Template and Customization 
-//  6. Menu Management 
-//  7. Search Functionality 
-//  8. Plugins and Extensions 
-//  9. SEO Tools 
-//  10. Reporting and Analytics 
-//  11. Version Control 
-//  12. Form Management 
-//  13. Backup and Restore 
-//  14. Notification and Communication 
+//  2. Content Management
+//  3. Content Editor
+//  4. Media Management
+//  7. Search Functionality
+//  11. Version Control
+//  12. Form Management
+
+//  5.  Template and Customization (skip)
+//  6.  Menu Management (skip)
+//  9.  SEO Tools   (skip)
+//  8.  Plugins and Extensions  (skip)
+//  10. Reporting and Analytics   (skip)
+//  13. Backup and Restore  (skip)
+//  14. Notification and Communication  (skip)
+//  15. Language EN - TH (skip)
+
+// fxSR3o1rYoEyEbIv

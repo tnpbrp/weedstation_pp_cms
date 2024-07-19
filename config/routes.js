@@ -36,12 +36,17 @@ module.exports.routes = {
     locals: { layout: 'layouts/register-layout' }
   },
 
-  // Auth
-  'POST /login': 'AuthController.login',
-  'POST /register': 'AuthController.register',
-  'POST /logout': 'AuthController.logout',
-  'POST /repassword': 'AuthController.repassword',
-  'POST /check/auth': 'AuthController.checkAuth',
+  // Auth 
+  'POST /login': { controller: 'AuthController', action: 'login' },
+  'POST /register': { controller: 'AuthController', action: 'register' },
+  'POST /logout': { controller: 'AuthController', action: 'logout' },
+  'POST /repassword': { controller: 'AuthController', action: 'repassword' },
+  'POST /check/auth': { controller: 'AuthController', action: 'checkAuth' },
+  // Oauth
+  'GET /auth/facebook': 'AuthController.facebook',
+  'GET /auth/facebook/callback': 'AuthController.facebookCallback',
+  'GET /auth/google': 'AuthController.google',
+  'GET /auth/google/callback': 'AuthController.googleCallback',
 
   // Product 
   'POST /product/upload': { controller: 'ProductController', action: 'uploadFile' },

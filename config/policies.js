@@ -20,10 +20,8 @@ module.exports.policies = {
   '*': true,
 
   AuthController: {
-    '*': 'isLoggedIn',
-    'register': true,
-    'login': true,
-    'checkAuth': true,
+    '*': true,
+    'logout': 'isLoggedIn',
   },
 
   ProductController: {

@@ -51,7 +51,8 @@ module.exports.datastores = {
     // adapter: 'sails-mysql',
     // url: 'mysql://user:password@host:port/database',
     adapter: 'sails-mongo',
-    url: 'mongodb://localhost:27017/Test',
+    // url: 'mongodb://localhost:27017/Test',
+    url:'mongodb://Weedstationpp_termchurch:77e78bf5d88246e7fbfb794a658604a8acc90cb0@6mf.h.filess.io:27018/Weedstationpp_termchurch'
     // หรือใช้ host, port, database, username, password ตามต้องการ
   },
 

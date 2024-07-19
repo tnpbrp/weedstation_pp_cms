@@ -1,8 +1,8 @@
 <div id="loginpage" v-cloak>
-    <div class="container">
-        <h1 class="mt-5">Login</h1>
-        <!-- <form class="mt-4" action="/login" method="POST"> ตั้ง action ตาม path ที่ใช้ในการโพสต์ข้อมูล -->
-        <form class="login-validation mt-4">
+    <div class="login-container">
+        <!-- Add LOGO -->
+        <h1 class=" text-center">Login</h1>
+        <form class="login-validation auth-form mt-4">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter username"
@@ -24,8 +24,18 @@
                 <button type="button" class="btn btn-info"><a href="/register"
                         style="color: white;">Register</a></button>
                 <button type="button" class="btn btn-primary" @click="login()">Login</button>
-                <a style="float: right;" class="mt-1" href="#/resetpassword">Reset Password</a>
+                <a class="resetpassword mt-1 disabled" href="#/resetpassword" >Reset Password</a>
             </div>
+
+            <hr class="">
+
+            <div class="form-group mt-3">
+                <button type="button" class="btn btn-outline-dark mb-2" @click="loginWithOAuth('google')" disabled><i
+                        class="fab fa-google"></i> Login with Google</button>
+                <button type="button" class="btn btn-outline-primary mb-2" @click="loginWithOAuth('facebook')"
+                    disabled><i class="fab fa-facebook"></i> Login with Facebook</button>
+            </div>
+
         </form>
     </div>
 </div>

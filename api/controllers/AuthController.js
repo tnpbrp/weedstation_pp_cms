@@ -4,7 +4,6 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
-
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 
@@ -81,6 +80,32 @@ module.exports = {
         // return res.ok();
         return res.send("Logged out successfully!");
     },
+
+    facebook: function (req, res, next) {
+        passport.authenticate('facebook')(req, res, next);
+    },
+
+    facebookCallback: function (req, res, next) {
+        passport.authenticate('facebook', function (err, user) {
+            // ดำเนินการหลังจากที่ผู้ใช้ลงทะเบียนผ่าน Facebook
+            // เช่น บันทึกข้อมูลผู้ใช้ในฐานข้อมูล หรือ สร้าง session
+            res.redirect('/');
+        })(req, res, next);
+    },
+
+    google: function (req, res, next) {
+        passport.authenticate('google', {
+            scope: ['https://www.googleapis.com/auth/plus.login']
+        })(req, res, next);
+    },
+
+    googleCallback: function (req, res, next) {
+        passport.authenticate('google', function (err, user) {
+            // ดำเนินการหลังจากที่ผู้ใช้ลงทะเบียนผ่าน Google
+            // เช่น บันทึกข้อมูลผู้ใช้ในฐานข้อมูล หรือ สร้าง session
+            res.redirect('/');
+        })(req, res, next);
+    }
 
 
 };

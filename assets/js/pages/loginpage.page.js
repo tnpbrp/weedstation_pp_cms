@@ -22,12 +22,13 @@ parasails.registerPage("loginpage", {
                 }
 
                 axios.post('/login', body).then((res) => {
-                    console.log(res);
                     window.location.href = '/';
                 }).catch((err) => {
-                    console.log(err.response)
-                    $.notify(err.response.data.message, 'error');
-                    console.log(err.response.data.message)
+                    if (err.response.status === 500) {
+                        $.notify(err.response.statusText, 'error');
+                    } else {
+                        $.notify(err.response.data.message, 'error');
+                    }
                 })
 
             });
