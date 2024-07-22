@@ -135,49 +135,47 @@ module.exports = {
         }
     },
 
+    // dataTable2: async function (req, res) {
+    //     try {
 
-    dataTable2: async function (req, res) {
-        try {
+    //         let limit = req.query.limit || 10;  // จำนวนรายการต่อหน้า (default: 10)
+    //         let offset = req.query.offset || 0;  // ตำแหน่งเริ่มต้นของข้อมูล
+    //         let search = req.query.search || '';  // ค่าที่ใช้ในการค้นหา
 
-            let limit = req.query.limit || 10;  // จำนวนรายการต่อหน้า (default: 10)
-            let offset = req.query.offset || 0;  // ตำแหน่งเริ่มต้นของข้อมูล
-            let search = req.query.search || '';  // ค่าที่ใช้ในการค้นหา
+    //         // สามารถทำการคิวรีข้อมูลจากฐานข้อมูล MongoDB หรืออื่น ๆ ได้ตามที่คุณต้องการ
 
-            // สามารถทำการคิวรีข้อมูลจากฐานข้อมูล MongoDB หรืออื่น ๆ ได้ตามที่คุณต้องการ
+    //         // ตัวอย่างการส่งกลับข้อมูลเป็น JSON
+    //         let products = await Product.find({
+    //             or: [
+    //                 { name: { contains: search } },
+    //                 { price: { contains: search } },
+    //                 { cate: { contains: search } }
 
-            // ตัวอย่างการส่งกลับข้อมูลเป็น JSON
-            let products = await Product.find({
-                or: [
-                    { name: { contains: search } },
-                    { price: { contains: search } },
-                    { cate: { contains: search } }
+    //             ]
+    //         })
+    //             .limit(limit)
+    //             .skip(offset);
 
-                ]
-            })
-                .limit(limit)
-                .skip(offset);
+    //         let count = await Product.count({
+    //             or: [
+    //                 { name: { contains: search } },
+    //                 { price: { contains: search } },
+    //                 { cate: { contains: search } }
 
-            let count = await Product.count({
-                or: [
-                    { name: { contains: search } },
-                    { price: { contains: search } },
-                    { cate: { contains: search } }
+    //                 // Add more search criteria as needed
+    //             ]
+    //         });
+    //         return res.json({
+    //             draw: parseInt(req.query.draw),
+    //             recordsTotal: count,
+    //             recordsFiltered: count,
+    //             data: products
+    //         });
 
-                    // Add more search criteria as needed
-                ]
-            });
-            return res.json({
-                draw: parseInt(req.query.draw),
-                recordsTotal: count,
-                recordsFiltered: count,
-                data: products
-            });
-
-        } catch (error) {
-            return res.serverError(error.message);
-        }
-    },
-
+    //     } catch (error) {
+    //         return res.serverError(error.message);
+    //     }
+    // },
 
 
 };
