@@ -22,7 +22,6 @@ module.exports.routes = {
   // '/': { view: 'pages/homepage' },
   '/': { view: 'pages/dashboardpage' },
   '/product': { view: 'pages/productpage' },
-
   '/register': {
     view: 'pages/registerpage',
     locals: { layout: 'layouts/register-layout' }
@@ -43,14 +42,16 @@ module.exports.routes = {
   'POST /repassword': { controller: 'AuthController', action: 'repassword' },
   'POST /check/auth': { controller: 'AuthController', action: 'checkAuth' },
   // Oauth
-  'GET /auth/facebook': 'AuthController.facebook',
-  'GET /auth/facebook/callback': 'AuthController.facebookCallback',
-  'GET /auth/google': 'AuthController.google',
-  'GET /auth/google/callback': 'AuthController.googleCallback',
+  // 'GET /auth/facebook': 'AuthController.facebook',
+  // 'GET /auth/facebook/callback': 'AuthController.facebookCallback',
+  // 'GET /auth/google': 'AuthController.google',
+  // 'GET /auth/google/callback': 'AuthController.googleCallback',
+
+  // File 
+  'POST /file/upload': { controller: 'ProductController', action: 'uploadFile' },
+  'POST /file/delete': { controller: 'ProductController', action: 'deleteFile' },
 
   // Product 
-  'POST /product/upload': { controller: 'ProductController', action: 'uploadFile' },
-  'POST /product/delete/file': { controller: 'ProductController', action: 'deleteFile' },
   'POST /product/create': { controller: 'ProductController', action: 'create' },
   'GET /product/find': { controller: 'ProductController', action: 'find' },
   'GET /product/table': { controller: 'ProductController', action: 'dataTable' },

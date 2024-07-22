@@ -103,7 +103,7 @@ parasails.registerPage("productpage", {
                     formData.append('file', document.getElementById('file-input').files[0], filename);
                     vm.newProduct['thumbnail'] = filename;
 
-                    axios.post(`/product/upload`, formData, {
+                    axios.post(`/file/upload`, formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             "filename": filename
@@ -164,7 +164,7 @@ parasails.registerPage("productpage", {
                     formData.append('file', document.getElementById('file-input-edit').files[0], filename);
                     vm.editProduct['thumbnail'] = filename;
 
-                    axios.post(`/product/upload`, formData, {
+                    axios.post(`/file/upload`, formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             "filename": filename
@@ -405,7 +405,7 @@ parasails.registerPage("productpage", {
         },
 
         deleteImages(filename) {
-            axios.post('/product/delete/file', {}, {
+            axios.post('/file/delete', {}, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     "filename": filename
