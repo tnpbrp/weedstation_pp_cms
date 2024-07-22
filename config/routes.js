@@ -49,8 +49,8 @@ module.exports.routes = {
   // 'GET /auth/google/callback': 'AuthController.googleCallback',
 
   // File 
-  'POST /file/upload': { controller: 'ProductController', action: 'uploadFile' },
-  'POST /file/delete': { controller: 'ProductController', action: 'deleteFile' },
+  // 'POST /file/upload': { controller: 'ProductController', action: 'uploadFile' },
+  // 'POST /file/delete': { controller: 'ProductController', action: 'deleteFile' },
 
   // Product 
   // 'POST /product/create': { controller: 'ProductController', action: 'create' },
