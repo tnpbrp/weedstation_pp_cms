@@ -41,6 +41,7 @@ module.exports.routes = {
   'POST /logout': { controller: 'AuthController', action: 'logout' },
   'POST /repassword': { controller: 'AuthController', action: 'repassword' },
   'POST /check/auth': { controller: 'AuthController', action: 'checkAuth' },
+
   // Oauth
   // 'GET /auth/facebook': 'AuthController.facebook',
   // 'GET /auth/facebook/callback': 'AuthController.facebookCallback',
@@ -52,12 +53,12 @@ module.exports.routes = {
   'POST /file/delete': { controller: 'ProductController', action: 'deleteFile' },
 
   // Product 
-  'POST /product/create': { controller: 'ProductController', action: 'create' },
-  'GET /product/find': { controller: 'ProductController', action: 'find' },
-  'GET /product/table': { controller: 'ProductController', action: 'dataTable' },
-  'GET /product/detail/:id': { controller: 'ProductController', action: 'findOne' },
-  'PUT /product/update/:id': { controller: 'ProductController', action: 'update' },
-  'DELETE /product/delete/:id': { controller: 'ProductController', action: 'destroy' },
+  // 'POST /product/create': { controller: 'ProductController', action: 'create' },
+  // 'GET /product/find': { controller: 'ProductController', action: 'find' },
+  // 'GET /product/table': { controller: 'ProductController', action: 'dataTable' },
+  // 'GET /product/detail/:id': { controller: 'ProductController', action: 'findOne' },
+  // 'PUT /product/update/:id': { controller: 'ProductController', action: 'update' },
+  // 'DELETE /product/delete/:id': { controller: 'ProductController', action: 'destroy' },
 
 
   /***************************************************************************
